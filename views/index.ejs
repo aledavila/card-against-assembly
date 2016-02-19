@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="CardsAgainstAssembly">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,25 +7,27 @@
         <link rel="stylesheet" href="//cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
         <link rel="stylesheet" href="/stylesheets/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/javascripts/app.js"></script>
+        <script type="text/javascript" src="/javascripts/cardsController.js"></script>
+        <script type="text/javascript" src="/javascripts/headerController.js"></script>
+        <script type="text/javascript" src="/javascripts/cardView.js"></script>
     </head>
     <body>
-      <div class="container">
-        <header class="navbar">
-          <h1 class="pull-left">Cards Against Assembly</h1>
+      <div class="container" ng-controller="CardsController as cardCtrl">
+        <header class="navbar" ng-controller="HeaderController">
+          <h1 class="pull-left">{{title}}</h1>
         </header>
 
-        <section id="cards" class="container-fluid">
-          <div class="row">
+        <nav class="tabs">
+          <a ui-sref-active="active" ui-sref="home">Home</a>
+          <a ui-sref-active="active" ui-sref="about">About</a>
+          <a ui-sref-active="active" ui-sref="new">Add a New Card</a>
+        </nav>
 
-            <div class="col-sm-6 col-md-6 col-lg-4">
-              <div class="card">
-                <h4 class="card-title">QUESTION</h4>
-                <h6>Cards Against Assembly</h6>
-              </div>
-            </div>
+        <div ui-view></div>
 
-          </div>
-        </section>
 
       <footer>
         <p>Made with <span class="heart">♥︎</span> at General Assembly</p>
